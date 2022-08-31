@@ -48,7 +48,7 @@ public class RedesController {
     }
 
     @PutMapping("/redes/editar/{id}")
-    public String putMethodName(@PathVariable Long id, @RequestBody Redes con) {
+    public String modificarRed(@PathVariable Long id, @RequestBody Redes con) {
         redesService.crearRed(con);
         return "la red ha sido modificada";
     }
