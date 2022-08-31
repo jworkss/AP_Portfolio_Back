@@ -3,6 +3,7 @@ package com.portfolio.jay.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,7 @@ public class EducacionController {
     @Autowired
     private IEducacionService eduService;
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/educacion/new")
     public String agregarEducacion(@RequestBody Educacion educacion) {
         eduService.crearEducacion(educacion);
@@ -40,12 +42,14 @@ public class EducacionController {
         return eduService.buscarEducacion(id);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/educacion/delete/{id}")
     public String borrarEducacion(@PathVariable Long id) {
         eduService.borrarEducacion(id);
         return "La educacion ha sido borrada";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/educacion/editar/{id}")
     public String modificarEducacion(@PathVariable Long id, @RequestBody Educacion educacion) {
         eduService.crearEducacion(educacion);

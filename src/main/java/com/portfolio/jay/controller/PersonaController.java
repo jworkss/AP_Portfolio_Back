@@ -3,6 +3,7 @@ package com.portfolio.jay.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,7 @@ public class PersonaController {
     @Autowired
     private IPersonaService persoService;
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/personas/new")
     public String agregarPersona(@RequestBody Persona pers) {
         persoService.crearPersona(pers);
@@ -41,12 +43,14 @@ public class PersonaController {
         return persoService.buscarPersona(id);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/personas/delete/{id}")
     public String borrarPersona(@PathVariable Long id) {
         persoService.borrarPersona(id);
         return "La Persona fue eliminada";
     }
-
+    
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/personas/editar/{id}")
     public String editarPersona(@PathVariable Long id, @RequestBody Persona persona){
         persoService.crearPersona(persona);
