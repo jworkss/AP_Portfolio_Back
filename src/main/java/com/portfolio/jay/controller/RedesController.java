@@ -3,7 +3,6 @@ package com.portfolio.jay.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,9 +22,9 @@ public class RedesController {
 
     @Autowired
     private IRedesService redesService;
-    @PreAuthorize("hasRole('ADMIN')")
+
     @PostMapping("/redes/new")
-    public String agregarRed(@RequestBody Redes redes){
+    public String agregarRed(@RequestBody Redes redes) {
         redesService.crearRed(redes);
         return "Se ha agregado una red nueva";
     }
@@ -42,18 +41,16 @@ public class RedesController {
         return redesService.buscarRed(id);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/redes/delete/{id}")
     public String borrarContacto(@PathVariable Long id) {
         redesService.borrarRed(id);
         return "La red ha sido borrada";
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/redes/editar/{id}")
     public String modificarRed(@PathVariable Long id, @RequestBody Redes con) {
         redesService.crearRed(con);
         return "la red ha sido modificada";
     }
-    
+
 }
