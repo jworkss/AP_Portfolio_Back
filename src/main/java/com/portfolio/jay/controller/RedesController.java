@@ -23,7 +23,6 @@ public class RedesController {
 
     @Autowired
     private IRedesService redesService;
-    
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/redes/new")
     public String agregarRed(@RequestBody Redes redes){
