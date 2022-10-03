@@ -46,7 +46,7 @@ public class ExperienciaController {
         return "La experiencia fue eliminada";
     }
 
-    @PutMapping("/experiencia/editar/{id}")
+    @PutMapping("/experiencias/editar/{id}")
     public String editarExperiencia(@PathVariable Long id, @RequestBody Experiencia experiencia){
         expService.cerearExperiencia(experiencia);
         return "La experiencia fue modificada";

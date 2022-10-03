@@ -17,8 +17,8 @@ public class ImplEducacionService implements IEducacionService {
 
     @Override
     public List<Educacion> verEducacion() {
-        List<Educacion> educacions = eduRepository.findAll();
-        return educacions;
+        List<Educacion> educacioness = eduRepository.findAll();
+        return educacioness;
     }
 
     @Override

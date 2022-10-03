@@ -25,10 +25,10 @@ public class Educacion {
     private String direccion;
     private String fecha_inicio;
     private String fecha_fin;
-    private Long persona_id;
+        private Long persona_id;
 
     public Educacion(@NotNull String titulo, String institucion, String url_foto, String direccion, String fecha_inicio,
-            String fecha_fin, Long persona_id) {
+            String fecha_fin,  Long persona_id) {
         this.titulo = titulo;
         this.institucion = institucion;
         this.url_foto = url_foto;

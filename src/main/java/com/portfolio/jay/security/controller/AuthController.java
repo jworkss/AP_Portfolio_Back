@@ -46,7 +46,7 @@ public class AuthController {
     JwtProvider jwtProvider;
 
     @PreAuthorize("hasRole('ADMIN')")
-    @PostMapping("/nuevo")
+    @PostMapping("/usuario")
     public ResponseEntity<?> nuevo(@Valid @RequestBody NuevoUsuario nuevoUsuario, BindingResult bindingResult) {
         if (bindingResult.hasErrors())
             return new ResponseEntity(new Mensaje("Campos mal puestos o email invalido"), HttpStatus.BAD_REQUEST);

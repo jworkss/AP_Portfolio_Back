@@ -22,10 +22,10 @@ public class Proyecto {
     private String nombre;
     private String descripcion;
     private String url_proyecto;
-    private Long url_foto;
+    private String url_foto;
     private Long persona_id;
 
-    public Proyecto(@NotNull String nombre, String descripcion, String url_proyecto, Long url_foto, Long persona_id) {
+    public Proyecto(@NotNull String nombre, String descripcion, String url_proyecto, String url_foto, Long persona_id) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.url_proyecto = url_proyecto;
