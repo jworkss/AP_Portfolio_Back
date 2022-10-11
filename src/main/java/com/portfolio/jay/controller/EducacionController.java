@@ -17,7 +17,7 @@ import com.portfolio.jay.Interface.IEducacionService;
 import com.portfolio.jay.model.Educacion;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://apmarcosfront-fdfe7.web.app")
 public class EducacionController {
     @Autowired
     private IEducacionService eduService;

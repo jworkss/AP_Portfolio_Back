@@ -17,7 +17,7 @@ import com.portfolio.jay.Interface.IRedesService;
 import com.portfolio.jay.model.Redes;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://apmarcosfront-fdfe7.web.app")
 public class RedesController {
 
     @Autowired

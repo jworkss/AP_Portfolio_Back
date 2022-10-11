@@ -17,7 +17,7 @@ import com.portfolio.jay.Interface.IExperienciaService;
 import com.portfolio.jay.model.Experiencia;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://apmarcosfront-fdfe7.web.app")
 public class ExperienciaController {
     @Autowired
     private IExperienciaService expService;

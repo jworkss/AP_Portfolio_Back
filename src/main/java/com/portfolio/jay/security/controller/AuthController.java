@@ -32,7 +32,7 @@ import com.portfolio.jay.security.service.UsuarioService;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin
+@CrossOrigin(origins = "https://apmarcosfront-fdfe7.web.app")
 public class AuthController {
     @Autowired
     PasswordEncoder passwordEncoder;

@@ -17,7 +17,7 @@ import com.portfolio.jay.Interface.ISkillService;
 import com.portfolio.jay.model.Skill;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://apmarcosfront-fdfe7.web.app")
 public class SkillController {
     @Autowired
     private ISkillService skillService;
