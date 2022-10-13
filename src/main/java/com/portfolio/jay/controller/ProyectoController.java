@@ -3,6 +3,7 @@ package com.portfolio.jay.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,12 +23,12 @@ public class ProyectoController {
 
     @Autowired
     private IProyectoService proyService;
-    
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/proyectos/new")
     public String agregarProuecto(@RequestBody Proyecto proyecto) {
         proyService.crearProyecto(proyecto);
-        return "Se ha agregado un proyecto" ; 
+        return "Se ha agregado un proyecto";
     }
 
     @GetMapping("/proyectos/ver")
@@ -42,14 +43,16 @@ public class ProyectoController {
         return proyService.buscarProyecto(id);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/proyectos/delete/{id}")
     public String borrarProyecto(@PathVariable Long id) {
         proyService.borrarProyecto(id);
         return "El protyecto fue eliminado";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/proyectos/editar/{id}")
-    public String editarPersona(@PathVariable Long id, @RequestBody Proyecto proyecto){
+    public String editarPersona(@PathVariable Long id, @RequestBody Proyecto proyecto) {
         proyService.crearProyecto(proyecto);
         return "El proyecto Fue modificado";
     }

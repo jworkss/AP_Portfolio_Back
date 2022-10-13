@@ -3,6 +3,7 @@ package com.portfolio.jay.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,10 +23,11 @@ public class ExperienciaController {
     @Autowired
     private IExperienciaService expService;
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/experiencias/new")
     public String agregarExperiencia(@RequestBody Experiencia experiencia) {
         expService.cerearExperiencia(experiencia);
-        return "Se ha agregado una experiencia" ; 
+        return "Se ha agregado una experiencia";
     }
 
     @GetMapping("/experiencias/ver")
@@ -40,14 +42,16 @@ public class ExperienciaController {
         return expService.buscarExperiencia(id);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/experiencias/delete/{id}")
     public String borrarExperiencia(@PathVariable Long id) {
         expService.borrarExperiencia(id);
         return "La experiencia fue eliminada";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/experiencias/editar/{id}")
-    public String editarExperiencia(@PathVariable Long id, @RequestBody Experiencia experiencia){
+    public String editarExperiencia(@PathVariable Long id, @RequestBody Experiencia experiencia) {
         expService.cerearExperiencia(experiencia);
         return "La experiencia fue modificada";
     }
