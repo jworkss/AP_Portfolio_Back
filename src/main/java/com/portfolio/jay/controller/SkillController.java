@@ -3,7 +3,6 @@ package com.portfolio.jay.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +21,6 @@ import com.portfolio.jay.model.Skill;
 public class SkillController {
     @Autowired
     private ISkillService skillService;
-    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/skills/new")
     public String agregarRed(@RequestBody Skill skill) {
         skillService.crearSkill(skill);
@@ -40,13 +38,11 @@ public class SkillController {
     public Skill bucsarSkill(@PathVariable Long id) {
         return skillService.buscarSkill(id);
     }
-    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/skills/delete/{id}")
     public String borrarSkill(@PathVariable Long id) {
         skillService.borrarSkill(id);
         return "El Skill ha sido borrado";
     }
-    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/skills/editar/{id}")
     public String modificarSkill(@PathVariable Long id, @RequestBody Skill skill) {
         skillService.crearSkill(skill);
